@@ -6,17 +6,25 @@ const strNums = ["1","4","1","5","9","2","6","5","3","5","8","9","7","9","3","2"
   //return the new array
   const stringsToNumbs = strNums.map(num => parseInt(num))
 
-  // With the same numbers, find the sum of the even values
-  // use .filter method
-  const sumEvens;
-  
-  console.log(sumEvens);
+  console.log(stringsToNumbs)
 
+  // With the same numbers, find the sum of the even values
+  // var that holds the result of .filter strtonums to find all even numbers
+  // use reduce to sum all the numbers of the filtered array together
+  const sumEvens = stringsToNumbs.filter(even => even % 2 === 0)
+
+  const allEvens = sumEvens.reduce( (accum, current) => accum + current, 0)
+  
+  console.log(allEvens);
+  
   // Find the index of the first value when added to it's index = 512 (#ATX!!)
   // find where number in the array + index of that number = 512
-  const atxIdx;
+  // .findindex
 
-  console.log(`index: ${atxIdx}, value: ${nums[atxIdx]}`);
+  // here's the pattern: array1.findIndex((element) => element > 3)
+  const atxIdx = stringsToNumbs.findIndex((num, ind) => num + ind === 512);
+
+  console.log(`index: ${atxIdx}, value: ${stringsToNumbs[atxIdx]}`);
 
   const weather = [
     { id: 5743823523151872,
@@ -83,13 +91,15 @@ const strNums = ["1","4","1","5","9","2","6","5","3","5","8","9","7","9","3","2"
       visibility: 11.14056410562316,
       predictability: 71
     },
-  ],
+  ]
 
   //using a higher order function, create an array of the unique 'weather_state_name' values of the weather array. Your function should return the following array ['Light Cloud', 'Heavy Cloud', 'Showers']
-  const weatherStates = 
+  const weatherStates = weather.map(state => state.weather_state_name)
+
   console.log(weatherStates)
 
-  //find the id of the object in weather that has a min_temp of 15.915
+//   //find the id of the object in weather that has a min_temp of 15.915
 
-  const idealTemp =
+  const idealTemp = weather.find(temp => temp.min_temp === 15.915).id
+  
   console.log(idealTemp)
